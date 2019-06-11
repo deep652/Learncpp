@@ -117,21 +117,42 @@ void first() // called by main()
 	std::cout << "End first\n";
 }
 
+//int main()
+//{
+//	std::cout << "Start main\n";
+//	try
+//	{
+//		first();
+//	}
+//	catch (int)
+//	{
+//		std::cerr << "main caught int exception\n";
+//	}
+//	std::cout << "End main\n";
+//
+//	getchar();
+//
+//	return 0;
+//}
+
+//catch all handlers: because everytime we don't know type of error trown by a method
+//benifits: specially it helps to do windup fnctionalitly, suppose there a method which have thrown an error and the caller was suppose to handel the
+//error. But unfortuan;ity there is no such catch block, so ultimately the stack will check the main for catch handler
+// if not found it will close the appication, but if we have catch alldefined in the main, it gives us chance to save the the program stage,
+//or close the open files etc
+
 int main()
 {
-	std::cout << "Start main\n";
 	try
 	{
-		first();
+		throw - 1;
 	}
-	catch (int)
+	catch (double)
+	{ }
+	catch (...)
 	{
-		std::cerr << "main caught int exception\n";
+		cout << "Catch all handler" << endl;
 	}
-	std::cout << "End main\n";
-
 	getchar();
-
 	return 0;
 }
-
